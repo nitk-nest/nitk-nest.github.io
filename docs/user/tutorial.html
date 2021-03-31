@@ -206,7 +206,8 @@ experiments in the emulated topologies.</p>
 <p><code class="docutils literal notranslate"><span class="pre">Node</span></code> is a class defined in NeST which emulates a node internally.  Note that
 <code class="docutils literal notranslate"><span class="pre">Node</span></code> takes a string parameter, representing the node name.  This will be
 needed later while using the experiment module.  (Internally, <code class="docutils literal notranslate"><span class="pre">Node</span></code> uses
-network namespaces for emulation. See section [TODO: Add ref] to know more).</p>
+network namespaces for emulation. Refer <a class="reference internal" href="../developer/introduction.html#introduction-to-developer-docs"><span class="std std-ref">Introduction to Developer docs</span></a>
+to know more).</p>
 <p>Now that two nodes are created, let’s connect them using “virtual ethernet
 cables” (veth pairs):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">n1_n2</span><span class="p">,</span> <span class="n">n2_n1</span><span class="p">)</span> <span class="o">=</span> <span class="n">connect</span><span class="p">(</span><span class="n">n1</span><span class="p">,</span> <span class="n">n2</span><span class="p">)</span>
@@ -236,7 +237,8 @@ and run the below command in the same directory as the <code class="docutils lit
 </div>
 <p>If you get output shown above, then the program ran successfully for you!
 If not, then there is likely an error in the way NeST was installed. Please
-refer <a class="reference internal" href="install.html#installation"><span class="std std-ref">Installation</span></a> and [TODO: Add ref to troubleshooting guide].</p>
+refer <a class="reference internal" href="install.html#installation"><span class="std std-ref">Installation</span></a> and ensure that you have run all the required
+steps.</p>
 <p>When the above program was run, the required topology was created by
 NeST. On exit, as the output of the program indicates, this topology is
 deleted. But just creating a topology is not useful, let’s
@@ -357,7 +359,6 @@ of the folder should be as follows:</p>
 <code class="docutils literal notranslate"><span class="pre">README.txt</span></code>. This file describes in detail the contents of the files
 in the folder. We highly urge you to read this file to get a better idea
 of the stats obtained by NeST.</p>
-<p>Let’s look at some plots we obtained from NeST. [to be continued]</p>
 </div>
 </div>
 </div>
