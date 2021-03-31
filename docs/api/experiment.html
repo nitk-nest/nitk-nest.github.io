@@ -89,6 +89,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../user/install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/tutorial.html">Tutorial</a></li>
 </ul>
+<p class="caption"><span class="caption-text">Developer Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developer/introduction.html">Introduction to Developer docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/architecture.html">Architecture</a></li>
+</ul>
 <p class="caption"><span class="caption-text">API Guide</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="api.html">Class Reference</a><ul class="current">
@@ -241,8 +246,22 @@ TCP with cubic congestion algorithm</p>
 
 <dl class="py method">
 <dt id="nest.experiment.experiment.Experiment.run">
-<code class="sig-name descname"><span class="pre">run</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nest.experiment.experiment.Experiment.run" title="Permalink to this definition">¶</a></dt>
-<dd><p>Run the experiment</p>
+<code class="sig-name descname"><span class="pre">run</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nest.experiment.experiment.Experiment.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wrapper function for DAD</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>*args</strong> (<em>Non-Keyword Arguments</em>) – passes variable number of arguments to a function</p></li>
+<li><p><strong>**kwargs</strong> (<em>Keyword Arguments</em>) – passes keyworded, variable-length argument list to a function</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Function to be executed after wrapper is executed</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>func</p>
+</dd>
+</dl>
 </dd></dl>
 
 </dd></dl>
@@ -294,37 +313,6 @@ TCP with cubic congestion algorithm</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="nest.experiment.run_exp.get_parser_workers">
-<code class="sig-prename descclassname"><span class="pre">nest.experiment.run_exp.</span></code><code class="sig-name descname"><span class="pre">get_parser_workers</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">runners_list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nest.experiment.run_exp.get_parser_workers" title="Permalink to this definition">¶</a></dt>
-<dd><p>Setup parsing processes</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>runners_list</strong> (<em>collections.NamedTuple</em>) – all(netperf, ping, ss, tc..) the runners</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>parsers</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>List[multiprocessing.Process]</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt id="nest.experiment.run_exp.get_plotter_workers">
-<code class="sig-prename descclassname"><span class="pre">nest.experiment.run_exp.</span></code><code class="sig-name descname"><span class="pre">get_plotter_workers</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nest.experiment.run_exp.get_plotter_workers" title="Permalink to this definition">¶</a></dt>
-<dd><p>Setup plotting processes</p>
-<dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>plotters</p>
-</dd>
-<dt class="field-even">Return type</dt>
-<dd class="field-even"><p>List[multiprocessing.Process]</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
 <dt id="nest.experiment.run_exp.get_readme_content">
 <code class="sig-prename descclassname"><span class="pre">nest.experiment.run_exp.</span></code><code class="sig-name descname"><span class="pre">get_readme_content</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nest.experiment.run_exp.get_readme_content" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return the content present in data/info.txt file</p>
@@ -353,6 +341,40 @@ TCP with cubic congestion algorithm</p>
 </dd></dl>
 
 <dl class="py function">
+<dt id="nest.experiment.run_exp.setup_flow_workers">
+<code class="sig-prename descclassname"><span class="pre">nest.experiment.run_exp.</span></code><code class="sig-name descname"><span class="pre">setup_flow_workers</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">exp_runners</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nest.experiment.run_exp.setup_flow_workers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Setup flow generation and stats collection processes(netperf, ss, tc, iperf…)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>exp_runners</strong> (<em>collections.NamedTuple</em>) – all(netperf, ping, ss, tc..) the runners</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>flow generation and stats collection processes</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List[multiprocessing.Process]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="nest.experiment.run_exp.setup_parser_workers">
+<code class="sig-prename descclassname"><span class="pre">nest.experiment.run_exp.</span></code><code class="sig-name descname"><span class="pre">setup_parser_workers</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">exp_runners</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nest.experiment.run_exp.setup_parser_workers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Setup parsing processes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>exp_runners</strong> (<em>collections.NamedTuple</em>) – all(netperf, ping, ss, tc..) the runners</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>parsers</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>List[multiprocessing.Process]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
 <dt id="nest.experiment.run_exp.setup_ping_runners">
 <code class="sig-prename descclassname"><span class="pre">nest.experiment.run_exp.</span></code><code class="sig-name descname"><span class="pre">setup_ping_runners</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dependency</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ping_schedules</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nest.experiment.run_exp.setup_ping_runners" title="Permalink to this definition">¶</a></dt>
 <dd><p>setup PingRunners for collecting latency</p>
@@ -369,6 +391,20 @@ TCP with cubic congestion algorithm</p>
 <li><p><strong>runners</strong> (<em>List[SsRunners]</em>)</p></li>
 </ul>
 </p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="nest.experiment.run_exp.setup_plotter_workers">
+<code class="sig-prename descclassname"><span class="pre">nest.experiment.run_exp.</span></code><code class="sig-name descname"><span class="pre">setup_plotter_workers</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nest.experiment.run_exp.setup_plotter_workers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Setup plotting processes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>plotters</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>List[multiprocessing.Process]</p>
 </dd>
 </dl>
 </dd></dl>

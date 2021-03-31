@@ -1,0 +1,297 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Architecture &mdash; NeST 0.2.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Class Reference" href="../api/api.html" />
+    <link rel="prev" title="Introduction to Developer docs" href="introduction.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> NeST
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">User Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../user/install.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/tutorial.html">Tutorial</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Developer Guide</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction to Developer docs</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Architecture</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#topology-module">Topology Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#experiment-module">Experiment Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#engine-module">Engine Module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#topology-map">Topology Map</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">API Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/api.html">Class Reference</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">NeST</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Architecture</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/developer/architecture.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="architecture">
+<h1>Architecture<a class="headerlink" href="#architecture" title="Permalink to this headline">¶</a></h1>
+<p>This section will introduce to you the core modules of NeST. These were one of
+the first modules to be added to NeST, and any new modules that are added and
+might be added in the future mostly extend these core modules. These modules
+are:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mf">1.</span> <span class="n">Topology</span> <span class="n">Module</span>
+<span class="mf">2.</span> <span class="n">Experiment</span> <span class="n">Module</span>
+<span class="mf">3.</span> <span class="n">Engine</span> <span class="n">Module</span>
+</pre></div>
+</div>
+<p>Additionally, we will also look into a small but important module called
+<code class="docutils literal notranslate"><span class="pre">Topology</span> <span class="pre">Map</span></code>.</p>
+<p>The below image shows the interaction among these modules:</p>
+<img alt="NeST Architecture Diagram" src="../_images/NeST_Architecture_Diagram.png" />
+<div class="section" id="topology-module">
+<h2>Topology Module<a class="headerlink" href="#topology-module" title="Permalink to this headline">¶</a></h2>
+<p>The topology module consists of APIs for creation, management and deletion of
+network namespace, network interfaces, addresses and routes. Network namespaces
+isolate network resources. We use this isolation to emulate <code class="docutils literal notranslate"><span class="pre">Nodes</span></code> in the
+network.</p>
+<p>In NeST, a node is an abstraction for a computing device that can communicate
+with other nodes. Nodes can communicate with other nodes using <code class="docutils literal notranslate"><span class="pre">Interfaces</span></code>.
+An interfaces can be assigned network addresses (i.e., IPv4 or IPv6 addresses).
+Using these addresses, two interfaces directly connected with one another can
+communicate. If not, then we can add routes to interfaces to ensure that
+non-adjacent interfaces can communicate. You can refer to <a class="reference internal" href="../user/tutorial.html#tutorial"><span class="std std-ref">Tutorial</span></a>
+section for more details on these APIs.</p>
+</div>
+<div class="section" id="experiment-module">
+<h2>Experiment Module<a class="headerlink" href="#experiment-module" title="Permalink to this headline">¶</a></h2>
+<p>The experiment module consists of APIs for running network experiments. A
+network experiment consists of APIs for generating network traffic. This traffic
+is run on topologies built using toplogy module, in the aim of understanding
+some networking phenomena (for eg., to understand TCP BBR’s behaviour of probing
+RTT every 10s). Network traffic is generated by using network utilities such as
+<code class="docutils literal notranslate"><span class="pre">netperf</span></code>, <code class="docutils literal notranslate"><span class="pre">iperf3</span></code>.</p>
+<p>Additionally, experiment module has <code class="docutils literal notranslate"><span class="pre">Parsers</span></code> and <code class="docutils literal notranslate"><span class="pre">Plotters</span></code>. <code class="docutils literal notranslate"><span class="pre">Parsers</span></code>
+run <code class="docutils literal notranslate"><span class="pre">iproute2</span></code> tools like <code class="docutils literal notranslate"><span class="pre">ss</span></code> (socket stats), <code class="docutils literal notranslate"><span class="pre">tc</span></code> (traffic control) at
+regular intervals to obtain crucial network data (like TCP CWND, Qdisc queue
+lenght, etc). This data is obtained by parsing the output of ss and tc.
+<code class="docutils literal notranslate"><span class="pre">Plotters</span></code> use these parsed result to produce plots.</p>
+<p>It is expected that this data visualized as plot would be more useful for the
+user. But the less readable parsed result is also available to the user in JSON
+format, in case they are interested to visualize data in their own way.</p>
+</div>
+<div class="section" id="engine-module">
+<h2>Engine Module<a class="headerlink" href="#engine-module" title="Permalink to this headline">¶</a></h2>
+<p>From the above two modules and the <a class="reference internal" href="introduction.html#introduction-to-developer-docs"><span class="std std-ref">Introduction to Developer docs</span></a>
+section, it is quite clear that NeST is a wrapper around network namespaces and
+network utilities. This implies the NeST inherently has lot of dependencies over
+networking tools. To keep track of all these depenedencies, and to make it
+easier to add new dependencies, we use the engine module.</p>
+<p>Put simply, engine module consists of python APIs that internally call the
+networking tools. The topology and experiment module use these APIs. For
+example, below is the command to create a network namespace in linux:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>ip netns add node
+</pre></div>
+</div>
+<p>In engine, we have a function called <code class="docutils literal notranslate"><span class="pre">create_ns</span></code>, which internally calls the
+above command. The <code class="docutils literal notranslate"><span class="pre">create_ns</span></code> API is used by topology module, in the
+constructor of the <code class="docutils literal notranslate"><span class="pre">Node</span></code> class.</p>
+<p>Note that the engine module APIs are considered to be “low-level”, which means
+it is not intended to be used by users. They are primarily used by “high-level”
+modules, like topology and experiment. The APIs exposed by topology and
+experiment are used by users.</p>
+</div>
+<div class="section" id="topology-map">
+<h2>Topology Map<a class="headerlink" href="#topology-map" title="Permalink to this headline">¶</a></h2>
+<p>Topology map assigns unique ids to the topology created by the user. What this
+ensures is that no to networking entities (eg. network namespaces, network
+interfaces) will have the same id. This allows the user to build multiple copies
+of the same topology and run different experiments on them.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../api/api.html" class="btn btn-neutral float-right" title="Class Reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="introduction.html" class="btn btn-neutral float-left" title="Introduction to Developer docs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2019-2021 NITK Surathkal.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

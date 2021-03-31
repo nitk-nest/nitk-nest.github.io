@@ -88,6 +88,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../user/install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/tutorial.html">Tutorial</a></li>
 </ul>
+<p class="caption"><span class="caption-text">Developer Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developer/introduction.html">Introduction to Developer docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/architecture.html">Architecture</a></li>
+</ul>
 <p class="caption"><span class="caption-text">API Guide</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="api.html">Class Reference</a><ul class="current">
@@ -717,7 +722,7 @@ for this <cite>param</cite>.</p>
 
 <dl class="py method">
 <dt id="nest.topology.node.Node.enable_ip_forwarding">
-<code class="sig-name descname"><span class="pre">enable_ip_forwarding</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ipv6</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nest.topology.node.Node.enable_ip_forwarding" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">enable_ip_forwarding</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ipv4</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ipv6</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nest.topology.node.Node.enable_ip_forwarding" title="Permalink to this definition">¶</a></dt>
 <dd><p>Enable IP forwarding in <cite>Node</cite>.</p>
 <p>After this method runs, the <cite>Node</cite> can be used as a router.</p>
 </dd></dl>
@@ -790,23 +795,20 @@ If no interface is found, then return None.</p>
 
 <dl class="py method">
 <dt id="nest.topology.node.Node.ping">
-<code class="sig-name descname"><span class="pre">ping</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">destination_address</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">packets</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">verbose</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nest.topology.node.Node.ping" title="Permalink to this definition">¶</a></dt>
-<dd><p>Ping from current <cite>Node</cite> to destination address
-if there is a route.</p>
+<code class="sig-name descname"><span class="pre">ping</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nest.topology.node.Node.ping" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wrapper function for DAD</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>destination_address</strong> (<em>Address/str</em>) – IP address to ping to</p></li>
-<li><p><strong>packets</strong> (<em>int</em>) – Number of ping packets sent (default: 1)</p></li>
-<li><p><strong>verbose</strong> (<em>bool</em>) – If <cite>True</cite>, print extensive ping success/failure details</p></li>
+<li><p><strong>*args</strong> (<em>Non-Keyword Arguments</em>) – passes variable number of arguments to a function</p></li>
+<li><p><strong>**kwargs</strong> (<em>Keyword Arguments</em>) – passes keyworded, variable-length argument list to a function</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
-<dd class="field-even"><p><cite>True</cite> if <cite>Node</cite> can successfully ping <cite>destination_address</cite>.
-Else <cite>False</cite>.</p>
+<dd class="field-even"><p>Function to be executed after wrapper is executed</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>bool</p>
+<dd class="field-odd"><p>func</p>
 </dd>
 </dl>
 </dd></dl>

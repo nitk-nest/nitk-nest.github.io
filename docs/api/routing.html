@@ -89,6 +89,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../user/install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/tutorial.html">Tutorial</a></li>
 </ul>
+<p class="caption"><span class="caption-text">Developer Guide</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../developer/introduction.html">Introduction to Developer docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../developer/architecture.html">Architecture</a></li>
+</ul>
 <p class="caption"><span class="caption-text">API Guide</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="api.html">Class Reference</a><ul class="current">
@@ -101,6 +106,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#module-nest.routing.ospf">Ospf</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-nest.routing.rip">Rip</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-nest.routing.isis">Isis</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-nest.routing.ldp">Ldp</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-nest.routing.routing_helper">RoutingHelper</a></li>
 </ul>
 </li>
@@ -383,17 +389,6 @@ Refer to <cite>DaemonBase</cite> for usage</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="nest.routing.rip.Rip.add_version">
-<code class="sig-name descname"><span class="pre">add_version</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">version</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nest.routing.rip.Rip.add_version" title="Permalink to this definition">¶</a></dt>
-<dd><p>Add version command to config file</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>version</strong> (<em>str</em>) – RIP version. Recommended is v2</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
 <dt id="nest.routing.rip.Rip.create_basic_config">
 <code class="sig-name descname"><span class="pre">create_basic_config</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nest.routing.rip.Rip.create_basic_config" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates a file with basic configuration for RIP.
@@ -433,12 +428,36 @@ Use base <cite>add_to_config</cite> directly for more complex configurations</p>
 </dd></dl>
 
 </div>
+<div class="section" id="module-nest.routing.ldp">
+<span id="ldp"></span><h2>Ldp<a class="headerlink" href="#module-nest.routing.ldp" title="Permalink to this headline">¶</a></h2>
+<p>Class to handles Ldp related functionalities</p>
+<dl class="py class">
+<dt id="nest.routing.ldp.Ldp">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">nest.routing.ldp.</span></code><code class="sig-name descname"><span class="pre">Ldp</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">router_ns_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">interfaces</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">conf_dir</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nest.routing.ldp.Ldp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#nest.routing.route_daemons.RoutingDaemonBase" title="nest.routing.route_daemons.RoutingDaemonBase"><code class="xref py py-class docutils literal notranslate"><span class="pre">nest.routing.route_daemons.RoutingDaemonBase</span></code></a></p>
+<p>Handles Ldp related functionalities for frr.</p>
+<dl class="py method">
+<dt id="nest.routing.ldp.Ldp.create_basic_config">
+<code class="sig-name descname"><span class="pre">create_basic_config</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nest.routing.ldp.Ldp.create_basic_config" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a file with basic configuration for ldp.
+Use base <cite>add_to_config</cite> directly for more complex configurations</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="nest.routing.ldp.Ldp.run">
+<code class="sig-name descname"><span class="pre">run</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nest.routing.ldp.Ldp.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Runs the ldpd command</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
 <div class="section" id="module-nest.routing.routing_helper">
 <span id="routinghelper"></span><h2>RoutingHelper<a class="headerlink" href="#module-nest.routing.routing_helper" title="Permalink to this headline">¶</a></h2>
 <p>Helper class for routing</p>
 <dl class="py class">
 <dt id="nest.routing.routing_helper.RoutingHelper">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">nest.routing.routing_helper.</span></code><code class="sig-name descname"><span class="pre">RoutingHelper</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">protocol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'static'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hosts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">routers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nest.routing.routing_helper.RoutingHelper" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">nest.routing.routing_helper.</span></code><code class="sig-name descname"><span class="pre">RoutingHelper</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">protocol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'static'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hosts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">routers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ldp_routers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nest.routing.routing_helper.RoutingHelper" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Handles basic routing requirements for the topology.
 Either inherit this class or use <cite>Zebra</cite> and other protocols
@@ -511,7 +530,7 @@ for better customizations</p>
 
 <dl class="py method">
 <dt id="nest.routing.routing_helper.RoutingHelper.__init__">
-<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">protocol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'static'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hosts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">routers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nest.routing.routing_helper.RoutingHelper.__init__" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">protocol</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'static'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hosts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">routers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ldp_routers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nest.routing.routing_helper.RoutingHelper.__init__" title="Permalink to this definition">¶</a></dt>
 <dd><p>Constructor for RoutingHelper</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -521,6 +540,8 @@ for better customizations</p>
 Use this if your topology has disjoint networks</p></li>
 <li><p><strong>routers</strong> (<em>List</em><em>[</em><a class="reference internal" href="topology.html#nest.topology.node.Node" title="nest.topology.node.Node"><em>Node</em></a><em>]</em>) – List of routers in the network. If <cite>None</cite>, considers the entire topology.
 Use this if your topology has disjoint networks</p></li>
+<li><p><strong>ldp_routers</strong> (<em>List</em><em>[</em><a class="reference internal" href="topology.html#nest.topology.node.Node" title="nest.topology.node.Node"><em>Node</em></a><em>]</em>) – List of Routers which are to be used with mpls.
+Only enables ldp discovery on interfaces with mpls enabled</p></li>
 </ul>
 </dd>
 </dl>
