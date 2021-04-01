@@ -4,10 +4,10 @@
 Routing
 =======
 
-QuaggaBase
-----------
+RoutingDaemonBase
+-----------------
 
-.. automodule:: nest.routing.quagga_base
+.. automodule:: nest.routing.route_daemons
    :members:
    :undoc-members:
    :show-inheritance:
@@ -45,6 +45,14 @@ Isis
    :undoc-members:
    :show-inheritance:
 
+Ldp
+---
+
+.. automodule:: nest.routing.ldp
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 RoutingHelper
 -------------
 
@@ -53,4 +61,3 @@ RoutingHelper
    :members:
    :undoc-members:
    :show-inheritance:
-

@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Class Reference &mdash; NeST 0.2.1 documentation</title>
+  <title>Introduction to Developer docs &mdash; NeST 0.2.1 documentation</title>
   
 
   
@@ -38,8 +38,8 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Config" href="config.html" />
-    <link rel="prev" title="Architecture" href="../developer/architecture.html" /> 
+    <link rel="next" title="Architecture" href="architecture.html" />
+    <link rel="prev" title="Config Usage" href="../user/config.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -91,22 +91,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../user/config.html">Config Usage</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Developer Guide</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../developer/introduction.html">Introduction to Developer docs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../developer/architecture.html">Architecture</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction to Developer docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">Architecture</a></li>
 </ul>
 <p class="caption"><span class="caption-text">API Guide</span></p>
-<ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Class Reference</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#nest-apis">NeST APIs</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="config.html">Config</a></li>
-<li class="toctree-l3"><a class="reference internal" href="experiment.html">Experiment</a></li>
-<li class="toctree-l3"><a class="reference internal" href="routing.html">Routing</a></li>
-<li class="toctree-l3"><a class="reference internal" href="topology.html">Topology</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../api/api.html">Class Reference</a></li>
 </ul>
 
             
@@ -155,13 +146,13 @@
     
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Class Reference</li>
+      <li>Introduction to Developer docs</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="../_sources/api/api.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/developer/introduction.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -174,39 +165,29 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="class-reference">
-<h1>Class Reference<a class="headerlink" href="#class-reference" title="Permalink to this headline">¶</a></h1>
-<p>User APIs for <cite>NeST</cite></p>
-<div class="section" id="nest-apis">
-<h2>NeST APIs<a class="headerlink" href="#nest-apis" title="Permalink to this headline">¶</a></h2>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="config.html">Config</a></li>
-<li class="toctree-l1"><a class="reference internal" href="experiment.html">Experiment</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="experiment.html#module-nest.experiment.experiment">Flow</a></li>
-<li class="toctree-l2"><a class="reference internal" href="experiment.html#module-nest.experiment.run_exp">run_exp</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="routing.html">Routing</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="routing.html#module-nest.routing.route_daemons">RoutingDaemonBase</a></li>
-<li class="toctree-l2"><a class="reference internal" href="routing.html#module-nest.routing.zebra">Zebra</a></li>
-<li class="toctree-l2"><a class="reference internal" href="routing.html#module-nest.routing.ospf">Ospf</a></li>
-<li class="toctree-l2"><a class="reference internal" href="routing.html#module-nest.routing.rip">Rip</a></li>
-<li class="toctree-l2"><a class="reference internal" href="routing.html#module-nest.routing.isis">Isis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="routing.html#module-nest.routing.ldp">Ldp</a></li>
-<li class="toctree-l2"><a class="reference internal" href="routing.html#module-nest.routing.routing_helper">RoutingHelper</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="topology.html">Topology</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="topology.html#module-nest.topology.address">Address</a></li>
-<li class="toctree-l2"><a class="reference internal" href="topology.html#module-nest.topology.interface">Interface</a></li>
-<li class="toctree-l2"><a class="reference internal" href="topology.html#module-nest.topology.node">Node</a></li>
-<li class="toctree-l2"><a class="reference internal" href="topology.html#module-nest.topology.traffic_control">Traffic Control</a></li>
-</ul>
-</li>
-</ul>
-</div>
-</div>
+  <div class="section" id="introduction-to-developer-docs">
+<h1>Introduction to Developer docs<a class="headerlink" href="#introduction-to-developer-docs" title="Permalink to this headline">¶</a></h1>
+<p>Developer docs is primarily for developers interested in contributing to NeST.
+It gives a peak into the internal structure of NeST that can be useful for
+new contributors.</p>
+<p>Before we proceed, let’s clear one thing. NeST is a wrapper around linux
+network namespaces and various other networking utilities.</p>
+<p>For network namespaces, it provides APIs to:</p>
+<ol class="arabic simple">
+<li><p>Create network namespaces</p></li>
+<li><p>Add network interfaces to namespaces</p></li>
+<li><p>Assign addresses to interfaces</p></li>
+<li><p>Add routes in interfaces, etc</p></li>
+</ol>
+<p>In NeST, we abstract upon network namespaces and instead call them <code class="docutils literal notranslate"><span class="pre">Node</span></code>.
+This is done so that users don’t need to know about network namespaces to use
+NeST.</p>
+<p>Using the above APIs, users can build complex network topologies. NeST provides
+APIs over various network utilities like <code class="docutils literal notranslate"><span class="pre">netperf</span></code>, <code class="docutils literal notranslate"><span class="pre">iperf3</span></code>, <code class="docutils literal notranslate"><span class="pre">ping</span></code>, etc
+so that users can run network traffic on their built topologies. These APIs
+allow users to run network experiments on their built topologies. And, NeST uses
+<code class="docutils literal notranslate"><span class="pre">iproute2</span></code> tools like <code class="docutils literal notranslate"><span class="pre">ss</span></code> (socket stats), <code class="docutils literal notranslate"><span class="pre">tc</span></code> (traffic control) so that
+users can obtain stats and plots from the network experiment they run.</p>
 </div>
 
 
@@ -215,8 +196,8 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="config.html" class="btn btn-neutral float-right" title="Config" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="../developer/architecture.html" class="btn btn-neutral float-left" title="Architecture" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="architecture.html" class="btn btn-neutral float-right" title="Architecture" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../user/config.html" class="btn btn-neutral float-left" title="Config Usage" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
