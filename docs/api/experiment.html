@@ -88,6 +88,7 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../user/install.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user/tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user/config.html">Config Usage</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Developer Guide</span></p>
 <ul>
@@ -224,7 +225,8 @@ TCP with cubic congestion algorithm</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>flow</strong> (<a class="reference internal" href="#nest.experiment.experiment.Flow" title="nest.experiment.experiment.Flow"><em>Flow</em></a>) – Flow to be added to experiment</p></li>
-<li><p><strong>target_bw</strong> – UDP bandwidth (in Mbits) (Default value = ‘1mbit’)</p></li>
+<li><p><strong>target_bandwidth</strong> – UDP bandwidth (in Mbits) (Default value = ‘1mbit’)
+This bandwidth limit is for each UDP stream in the flow</p></li>
 </ul>
 </dd>
 </dl>
@@ -343,7 +345,7 @@ TCP with cubic congestion algorithm</p>
 <dl class="py function">
 <dt id="nest.experiment.run_exp.setup_flow_workers">
 <code class="sig-prename descclassname"><span class="pre">nest.experiment.run_exp.</span></code><code class="sig-name descname"><span class="pre">setup_flow_workers</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">exp_runners</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nest.experiment.run_exp.setup_flow_workers" title="Permalink to this definition">¶</a></dt>
-<dd><p>Setup flow generation and stats collection processes(netperf, ss, tc, iperf…)</p>
+<dd><p>Setup flow generation and stats collection processes(netperf, ss, tc, iperf3…)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>exp_runners</strong> (<em>collections.NamedTuple</em>) – all(netperf, ping, ss, tc..) the runners</p>
@@ -477,14 +479,13 @@ TCP with cubic congestion algorithm</p>
 
 <dl class="py function">
 <dt id="nest.experiment.run_exp.setup_udp_flows">
-<code class="sig-prename descclassname"><span class="pre">nest.experiment.run_exp.</span></code><code class="sig-name descname"><span class="pre">setup_udp_flows</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dependency</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flow</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ss_schedules</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">destination_nodes</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nest.experiment.run_exp.setup_udp_flows" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">nest.experiment.run_exp.</span></code><code class="sig-name descname"><span class="pre">setup_udp_flows</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dependency</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">flow</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">destination_nodes</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nest.experiment.run_exp.setup_udp_flows" title="Permalink to this definition">¶</a></dt>
 <dd><p>Setup iperf3 to run udp flows</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>dependency</strong> (<em>int</em>) – whether iperf3 is installed</p></li>
 <li><p><strong>flow</strong> (<a class="reference internal" href="#nest.experiment.experiment.Flow" title="nest.experiment.experiment.Flow"><em>Flow</em></a>) – Flow parameters</p></li>
-<li><p><strong>ss_schedules</strong> – ss_schedules so far</p></li>
 <li><p><strong>destination_nodes</strong> – Destination nodes so far already running iperf3 server</p></li>
 </ul>
 </dd>
